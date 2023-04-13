@@ -1,4 +1,4 @@
-# Reproducing bug when using HashAlgorithm.crc16_custom consecutive times
+# Incorrect output when using HashAlgorithm.crc16_custom consecutive times
 
 ## Introduction
 
@@ -81,7 +81,7 @@ action operation_dcrc() {
 ```
 
 
-## Step 1: Run the (incomplete) starter code
+## Step 1: Run the test code
 
 As a first step, compile the incomplete `calc.p4` and bring up a
 switch in Mininet to test its behavior.
@@ -97,7 +97,7 @@ switch in Mininet to test its behavior.
      two hosts (`h1`, `h2`).
    * The hosts are assigned IPs of `10.0.1.1` and `10.0.1.2`.
 
-2. You access s1 directly from the Mininet command prompt:
+2. You can access s1 directly from the Mininet command prompt:
 
 ```
 mininet> xterm s1
@@ -144,9 +144,12 @@ result.
 >
 ```
 
- Both results should return the same value, but it is not working correctly.
+Both operations should return the same result, but it is not working as 
+expected. This happens when the code performs consecutive hash operations,
+using the custom CRC algorithm, even if the operations are completely
+independent.
 
-A interesting observation: if you perform the same operation without
+However, if you perform the same operation without
 setting up a custom crc configuration beforehand the bug does not appear:
 ```
 > 1#6
