@@ -137,10 +137,10 @@ result.
 ```
 > 1#6
 1#6
-49351
+49345
 > 1%6
 1%6
-49
+43
 >
 ```
 
@@ -154,8 +154,8 @@ setting up a custom crc configuration beforehand the bug does not appear:
 ```
 > 1#6
 1#6
-49351
+49345
 > 1%6
 1%6
-49351
+49345
 ```
